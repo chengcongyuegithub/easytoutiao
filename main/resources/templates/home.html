@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>头条资讯 - 牛客网</title>
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="keywords" content="读《Web 全栈工程师的自我修养》">
+    <meta name="description" content="阅读影浅分享的读《Web 全栈工程师的自我修养》，就在牛客网。">
+
+    <link rel="stylesheet" type="text/css" href="/styles/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/styles/font-awesome.min.css">
+
+    <link rel="stylesheet" media="all" href="/styles/style.css">
+
+    <script src="/scripts/hm.js"></script>
+    <script src="/scripts/detail.js"></script>
+
+    <script type="text/javascript" src="/scripts/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/scripts/jquery.qrcode.min.js"></script>
+</head>
+<body class="welcome_index">
+
+    <div th:include="navbar::navigation"></div>
+    <div id="main">
+
+        <div class="container" id="daily">
+            <div class="jscroll-inner">
+                <div th:each="entry,entryStat:${vos}">
+                <div class="daily">
+                    <div th:if="${entry.get('ifprint')}">
+                    <h3 class="date">
+                        <i class="fa icon-calendar"></i>
+                        <span>头条资讯&nbsp;<span th:text="${#dates.format(entry.get('news').createdDate,'yyyy-MM-dd HH:mm:ss')}"></span></span>
+                    </h3>
+                    </div></div>
+                    <div class="posts">
+                        <div class="post">
+                            <div class="votebar">
+                                <button class="click-like up" aria-pressed="false" title="赞同"><i class="vote-arrow"></i><span class="count" th:text="${entry.get('news').likeCount}"></span></button>
+                                <button class="click-dislike down" aria-pressed="true" title="反对"><i class="vote-arrow"></i>
+                                </button>
+                            </div>
+                            <div class="content" data-url="http://nowcoder.com/posts/5l3hjr">
+                                <div >
+                                    <img class="content-img" th:src="${entry.get('news').image}" alt="">
+                                </div>
+                                <div class="content-main">
+                                    <h3 class="title">
+                                        <a target="_blank" rel="external nofollow" th:href="${entry.get('news').link}"><span th:text="${entry.get('news').title}"></span></a>
+                                    </h3>
+                                    <div class="meta">
+                                        <span>
+                                            <i class="fa icon-comment"></i> <span th:text="${entry.get('news').commentCount}"></span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="user-info">
+                                <div class="user-avatar">
+                                    <a th:href="@{'/user/'+${entry.get('user').id}}"><img width="32" class="img-circle" th:src="${entry.get('user').headUrl}"></a>
+                                </div>
+                            </div>
+                            <div class="subject-name">来自 <a th:href="@{'/user/'+${entry.get('user').id}}"><span th:text="${entry.get('user').name}"></span></a></div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div th:include="footer::footer"></div>
+</body></html>

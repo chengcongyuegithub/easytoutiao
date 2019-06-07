@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>news</title>
+</head>
+<body>
+
+<p th:text="${value1}"></p>
+
+<div th:each="color:${colors}">
+    <span th:text="${color}"></span>
+</div>
+<div th:each="entry:${map}">
+    <span th:text="${entry.key}"></span>
+    <span th:text="${entry.value}"></span>
+</div>
+<p th:text="${user.name}"></p>
+
+</body>
+</html>
