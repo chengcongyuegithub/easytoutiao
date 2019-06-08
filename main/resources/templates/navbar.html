@@ -28,7 +28,12 @@
                     <li class=""><a href="http://nowcoder.com/explore">发现</a></li>
 
                     <li><a href="http://nowcoder.com/signin">站内信</a></li>
-                    <li class=""><a href="http://nowcoder.com/about">登陆</a></li>
+                    <li class="js-login">
+                            <a href="javascript:void(0);"th:switch="${user}!=null">
+                                <span th:case="false">登录</span>
+                                <span th:case="true" th:text="${user.name}"></span>
+                            </a>
+                    </li>
                 </ul>
 
             </nav>

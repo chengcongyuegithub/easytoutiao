@@ -57,9 +57,4 @@ public class HomeController {
         model.addAttribute("vos",getNews(userId,0,10));
         return "home";
     }
-
-    public static void main(String[] args) {
-        String value="2019-06-05 15:27:14";
-        System.out.println();
-    }
 }
