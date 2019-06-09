@@ -13,6 +13,27 @@ import java.util.Map;
 public class ToutiaoUtil {
     private static final Logger logger = LoggerFactory.getLogger(ToutiaoUtil.class);
 
+    //匿名
+    public static final int ANONUMOUS=999;
+    //访问图片的域名
+    public static final String TOUTIAO_DOMAIN="http://127.0.0.1:8080/";
+    public static final String QINIU_TOUTIAO_DOMAIN="http://pstcmb5yk.bkt.clouddn.com/";
+    //图片存放的位置
+    public static String IMAGE_DIR="/home/chengcongyue/";
+    public static String[] IMAGE_FILE_EXTD=new String[]{"png","bmp","jpg","jpeg"};
+
+    public static boolean isFileAllowed(String fileName)
+    {
+        for(String ext:IMAGE_FILE_EXTD)
+        {
+            if(ext.equals(fileName))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public static String getJSONString(int code) {
         JSONObject json = new JSONObject();
         json.put("code", code);
